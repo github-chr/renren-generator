@@ -1,5 +1,9 @@
 **项目说明** 
-- renren-generator是人人开源项目的代码生成器，可在线生成entity、xml、dao、service、html、js、sql代码，减少70%以上的开发任务
+- 基于人人开源项目的代码生成器，可在线生成entity、xml、dao、service、html、js、sql代码，减少70%以上的开发任务
+- 新增功能：
+  1、日志打印：在此基础上添加了AOP切面日志打印输出（URI、IP、GET/POST的JSON格式请求参数和返回参数）-
+  2、在原有MySQL的基础上支持了PostgreSQL
+  3、新增dbName选择数据库配置：generator.properties中dbName
 <br> 
 
 
@@ -8,11 +12,6 @@
 - [人人开源](https://www.renren.io)：https://www.renren.io   
 - [人人开源社区](https://www.renren.io/community)：https://www.renren.io/community   
 - 官方QQ群：324780204、145799952
-- 技术讨论、二次开发等咨询、问题和建议，请移步到人人开源社区，我会在第一时间进行解答和回复
-- 如需关注项目最新动态，请Watch、Star项目，同时也是对项目最好的支持
-- 微信扫码并关注【人人开源】，获得项目最新动态及更新提醒<br>
-![输入图片说明](http://cdn.renren.io/47c26201804031918312618.jpg "在这里输入图片标题")
-<br> 
 <br> 
 
  **本地部署**
