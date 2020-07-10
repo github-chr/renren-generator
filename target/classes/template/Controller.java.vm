@@ -1,0 +1,201 @@
+package ${package}.${moduleName}.controller;
+
+import java.util.Arrays;
+import java.util.Map;
+
+import io.renren.utils.ParamUtil;
+import io.renren.utils.R;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import ${package}.${moduleName}.entity.${className}Entity;
+import ${package}.${moduleName}.service.${className}Service;
+import ${mainPath}.common.utils.PageUtils;
+import ${mainPath}.common.utils.R;
+
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@RestController
+@RequestMapping("${moduleName}/${pathName}")
+public class ${className}Controller {
+    protected final Logger logger = LogManager.getLogger(this.getClass());
+    @Autowired HttpServletRequest request;
+    @Autowired
+    private ${className}Service ${classname}Service;
+
+    /**
+     * 列表
+     */
+    @RequestMapping("/list")
+    @RequiresPermissions("${moduleName}:${pathName}:list")
+    public R list(@RequestBody String reqStr){
+        long start = System.currentTimeMillis();
+        String requestURI = request.getRequestURI();
+        String ipAddr = ParamUtil.getIpAddr(request);
+        R r = null;
+        try {
+            R baseVO = (R)JsonUtil.writeJSON2Object(reqStr, R.class);
+            Map<String, String> validate = ParamUtil.validate(baseVO);
+            if(validate.size()>0){
+                logger.error("参数错误:"+validate.toString());
+                r = R.paramError();
+            }else{
+                PageUtils page = ${classname}Service.queryPage(params);
+                r = R.ok(page.getList());
+            }
+        }catch (Exception e){
+            r = R.error();
+            logger.error(ParamUtil.LOG_ERROR_STR, ParamUtil.string2Json(ParamUtil.getStackTraceInfo(e)));
+        }finally {
+            logger.log(LogUtils.returnBizLevel(), ParamUtil.LOG_FORMAT, ipAddr,
+                    System.currentTimeMillis() - start, requestURI,
+                    null != reqStr ? reqStr.replaceAll(CommonConsts.COMMENT_ENTER_STR,
+                            CommonConsts.EMPTY_STR) : "",
+                    r.toJSONString());
+        }
+        return r;
+    }
+
+
+    /**
+     * 信息
+     */
+    @RequestMapping("/info/{${pk.attrname}}")
+    @RequiresPermissions("${moduleName}:${pathName}:info")
+    public R info(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+        long start = System.currentTimeMillis();
+        String requestURI = request.getRequestURI();
+        String ipAddr = ParamUtil.getIpAddr(request);
+        R r = null;
+        try {
+            R baseVO = (R)JsonUtil.writeJSON2Object(reqStr, R.class);
+            Map<String, String> validate = ParamUtil.validate(baseVO);
+            if(validate.size()>0){
+                logger.error("参数错误:"+validate.toString());
+                r = R.paramError();
+            }else{
+                ${className}Entity ${classname} = ${classname}Service.selectById(${pk.attrname});
+                r = R.ok(${classname});
+            }
+        }catch (Exception e){
+            r = R.error();
+            logger.error(ParamUtil.LOG_ERROR_STR, ParamUtil.string2Json(ParamUtil.getStackTraceInfo(e)));
+        }finally {
+            logger.log(LogUtils.returnBizLevel(), ParamUtil.LOG_FORMAT, ipAddr,
+                    System.currentTimeMillis() - start, requestURI,
+                    null != reqStr ? reqStr.replaceAll(CommonConsts.COMMENT_ENTER_STR,
+                            CommonConsts.EMPTY_STR) : "",
+                    r.toJSONString());
+        }
+        return r;
+    }
+
+    /**
+     * 保存
+     */
+    @RequestMapping("/save")
+    @RequiresPermissions("${moduleName}:${pathName}:save")
+    public R save(@RequestBody ${className}Entity ${classname}){
+        long start = System.currentTimeMillis();
+        String requestURI = request.getRequestURI();
+        String ipAddr = ParamUtil.getIpAddr(request);
+        R r = null;
+        try {
+            R baseVO = (R)JsonUtil.writeJSON2Object(reqStr, R.class);
+            Map<String, String> validate = ParamUtil.validate(baseVO);
+            if(validate.size()>0){
+                logger.error("参数错误:"+validate.toString());
+                r = R.paramError();
+            }else{
+                int num = ${classname}Service.insert(${classname});
+                r = R.ok(num);
+            }
+        }catch (Exception e){
+            r = R.error();
+            logger.error(ParamUtil.LOG_ERROR_STR, ParamUtil.string2Json(ParamUtil.getStackTraceInfo(e)));
+        }finally {
+            logger.log(LogUtils.returnBizLevel(), ParamUtil.LOG_FORMAT, ipAddr,
+                    System.currentTimeMillis() - start, requestURI,
+                    null != reqStr ? reqStr.replaceAll(CommonConsts.COMMENT_ENTER_STR,
+                            CommonConsts.EMPTY_STR) : "",
+                    r.toJSONString());
+        }
+        return r;
+    }
+
+    /**
+     * 修改
+     */
+    @RequestMapping("/update")
+    @RequiresPermissions("${moduleName}:${pathName}:update")
+    public R update(@RequestBody ${className}Entity ${classname}){
+
+        long start = System.currentTimeMillis();
+        String requestURI = request.getRequestURI();
+        String ipAddr = ParamUtil.getIpAddr(request);
+        R r = null;
+        try {
+            R baseVO = (R)JsonUtil.writeJSON2Object(reqStr, R.class);
+            Map<String, String> validate = ParamUtil.validate(baseVO);
+            if(validate.size()>0){
+                logger.error("参数错误:"+validate.toString());
+                r = R.paramError();
+            }else{
+                int num = ${classname}Service.updateById(${classname});
+                r = R.ok(num);
+            }
+        }catch (Exception e){
+            r = R.error();
+            logger.error(ParamUtil.LOG_ERROR_STR, ParamUtil.string2Json(ParamUtil.getStackTraceInfo(e)));
+        }finally {
+            logger.log(LogUtils.returnBizLevel(), ParamUtil.LOG_FORMAT, ipAddr,
+                    System.currentTimeMillis() - start, requestURI,
+                    null != reqStr ? reqStr.replaceAll(CommonConsts.COMMENT_ENTER_STR,
+                            CommonConsts.EMPTY_STR) : "",
+                    r.toJSONString());
+        }
+        return r;
+    }
+
+    /**
+     * 删除
+     */
+    @RequestMapping("/delete")
+    @RequiresPermissions("${moduleName}:${pathName}:delete")
+    public R delete(@RequestBody ${pk.attrType}[] ${pk.attrname}s){
+        long start = System.currentTimeMillis();
+        String requestURI = request.getRequestURI();
+        String ipAddr = ParamUtil.getIpAddr(request);
+        R r = null;
+        try {
+            R baseVO = (R)JsonUtil.writeJSON2Object(reqStr, R.class);
+            Map<String, String> validate = ParamUtil.validate(baseVO);
+            if(validate.size()>0){
+                logger.error("参数错误:"+validate.toString());
+                r = R.paramError();
+            }else{
+                int num = ${classname}Service.deleteBatchIds(Arrays.asList(${pk.attrname}s));
+                r = R.ok(num);
+            }
+        }catch (Exception e){
+            r = R.error();
+            logger.error(ParamUtil.LOG_ERROR_STR, ParamUtil.string2Json(ParamUtil.getStackTraceInfo(e)));
+        }finally {
+            logger.log(LogUtils.returnBizLevel(), ParamUtil.LOG_FORMAT, ipAddr,
+                    System.currentTimeMillis() - start, requestURI,
+                    null != reqStr ? reqStr.replaceAll(CommonConsts.COMMENT_ENTER_STR,
+                            CommonConsts.EMPTY_STR) : "",
+                    r.toJSONString());
+        }
+        return r;
+    }
+
+}

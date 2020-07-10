@@ -1,0 +1,9 @@
+io\renren\dao\PGSQLSysGeneratorDao.class
+io\renren\utils\Query.class
+io\renren\entity\ColumnEntity.class
+io\renren\utils\R.class
+io\renren\RenrenApplication.class
+io\renren\dao\SysGeneratorDao.class
+io\renren\entity\TableEntity.class
+io\renren\service\SysGeneratorService.class
+io\renren\controller\SysGeneratorController.class

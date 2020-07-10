@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.SysGeneratorDao">
+	<select id="queryList" resultType="map">
+		<choose>
+			<when test="dbName == 'MySQL'">
+				<include refid="MySQLQueryList"></include>
+			</when>
+			<when test="dbName == 'Postgresql'">
+				<include refid="PostgresqlQueryList"></include>
+			</when>
+		</choose>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		<choose>
+			<when test="dbName == 'MySQL'">
+				<include refid="MySQLQueryTotal"></include>
+			</when>
+			<when test="dbName == 'Postgresql'">
+				<include refid="PostgresqlQueryTotal"></include>
+			</when>
+		</choose>
+	</select>
+
+	<select id="queryTable" resultType="map" parameterType="string">
+		<choose>
+			<when test="dbName == 'MySQL'">
+				<include refid="MySQLQueryTable"></include>
+			</when>
+			<when test="dbName == 'Postgresql'">
+				<include refid="PostgresqlQueryTable"></include>
+			</when>
+		</choose>
+	</select>
+
+	<select id="queryColumns" resultType="map">
+		<choose>
+			<when test="dbName == 'MySQL'">
+				<include refid="MySQLQueryColumns"></include>
+			</when>
+			<when test="dbName == 'Postgresql'">
+				<include refid="PostgresqlQueryColumns"></include>
+			</when>
+		</choose>
+	</select>
+
+	<!--Postgresql 查询SQL-->
+	<sql id="PostgresqlQueryList">
+		SELECT
+		pt.tablename AS "tableName" ,
+		null "engine",
+		cast(obj_description(relfilenode,'pg_class') as varchar) AS "tableComment",
+		NOW() AS "createTime"
+		FROM
+		pg_tables pt
+		INNER JOIN
+		pg_class oc
+		ON
+		pt.schemaname='public'
+		AND oc.relname= pt.tablename
+		<if test="tableName != null and tableName.trim() != ''">
+			AND pt.tablename ~#{tableName}
+		</if>
+		<if test="offset != null and limit != null">
+			LIMIT #{limit} OFFSET #{offset}
+		</if>
+	</sql>
+
+	<sql id="PostgresqlQueryTotal">
+		SELECT
+		COUNT(1)
+		FROM
+		pg_tables pt
+		INNER JOIN
+		pg_class oc
+		ON
+		pt.schemaname='public'
+		AND oc.relname= pt.tablename
+		<if test="tableName != null and tableName.trim() != ''">
+			AND pt.tablename ~#{tableName}
+		</if>
+	</sql>
+
+	<sql id="PostgresqlQueryTable">
+		SELECT
+			pt.tablename AS "tableName" ,
+			null "engine",
+			cast(obj_description(relfilenode,'pg_class') as varchar) AS "tableComment",
+			NOW() AS "createTime"
+		FROM
+				pg_tables pt
+		INNER JOIN
+			pg_class oc
+		ON
+			pt.schemaname='public'
+			AND oc.relname= pt.tablename
+			AND pt.tablename = #{tableName}
+	</sql>
+
+	<sql id="PostgresqlQueryColumns">
+		SELECT
+			a.attnum :: VARCHAR,
+			a.attname "columnName",
+			t.typname "dataType",
+			COALESCE(d.character_maximum_length, d.numeric_precision) :: VARCHAR "columnKey",
+			d.numeric_scale :: VARCHAR,
+			d.column_default :: VARCHAR,
+			col_description(a.attrelid,a.attnum) as "extra"
+		FROM
+			pg_class c,
+			pg_attribute a,
+			pg_type t,
+			information_schema."columns" d
+		WHERE
+			a.attrelid = c.oid
+			and a.atttypid = t.oid
+			and a.attnum > 0
+			and c.relname = d.table_name
+			and d.column_name = a.attname
+			and c.relname = #{tableName}
+		ORDER BY a.attnum
+	</sql>
+
+	<!--MySQL 查询SQL-->
+
+	<sql id="MySQLQueryList">
+		select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables
+		where table_schema = (select database())
+		<if test="tableName != null and tableName.trim() != ''">
+			and table_name like concat('%', #{tableName}, '%')
+		</if>
+		order by create_time desc
+		<if test="offset != null and limit != null">
+			LIMIT #{limit} OFFSET #{offset}
+		</if>
+	</sql>
+
+
+	<sql id="MySQLQueryTotal">
+		select count(*) from information_schema.tables where table_schema = (select database())
+		<if test="tableName != null and tableName.trim() != ''">
+			and table_name like concat('%', #{tableName}, '%')
+		</if>
+	</sql>
+
+	<sql id="MySQLQueryTable">
+		select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables
+			where table_schema = (select database()) and table_name = #{tableName}
+	</sql>
+
+	<sql id="MySQLQueryColumns">
+		select column_name columnName, data_type dataType, column_comment columnComment, column_key columnKey, extra from information_schema.columns
+ 			where table_name = #{tableName} and table_schema = (select database()) order by ordinal_position
+	</sql>
+</mapper>
