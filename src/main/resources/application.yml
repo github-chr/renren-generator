@@ -6,7 +6,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.1.133:23451/appstore?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:postgresql://192.168.1.133:23451/paycore?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: postgres
     password: postgres
   jackson:
