@@ -2,14 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb3d6c3e-937c-48ce-9ece-2c28288f7085" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/renren/controller/GlobalExceptionResolve.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/renren/utils/LogUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/velocity.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/velocity.log.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/renren/controller/LogRecordAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/renren/controller/LogRecordAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/renren/utils/ImgUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/Controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/Controller.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/Entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/Entity.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/ServiceImpl.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/ServiceImpl.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/renren/controller/LogRecordAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/renren/controller/LogRecordAspect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/renren/utils/GenUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/renren/utils/GenUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/Controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Controller.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/Dao.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Dao.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/Dao.xml.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Dao.xml.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/Entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Entity.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/Service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Service.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/ServiceImpl.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/ServiceImpl.java.vm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -20,6 +48,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -34,6 +65,9 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1eTWJvxBRtq7NToaNHY0VMe4I3Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -57,6 +91,10 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="io.renren.controller" />
+      <recent name="io.renren.utils" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\EclipseProject\renren-generator\src\main\java\io\renren\dao" />
       <recent name="F:\EclipseProject\renren-generator\src\main\resources\mapper" />
@@ -75,6 +113,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.RenrenApplication">
+    <configuration name="ImgUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.renren.utils.ImgUtil" />
+      <module name="renren-generator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="R" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.renren.utils.R" />
       <module name="renren-generator" />
@@ -511,6 +556,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.RenrenApplication" />
+        <item itemvalue="Application.ImgUtil" />
         <item itemvalue="Application.R" />
       </list>
     </recent_temporary>
@@ -527,7 +573,12 @@
       <updated>1594345994333</updated>
       <workItem from="1594345995519" duration="738000" />
       <workItem from="1594347518457" duration="3833000" />
-      <workItem from="1594351383638" duration="19618000" />
+      <workItem from="1594351383638" duration="20208000" />
+      <workItem from="1594620197972" duration="25273000" />
+      <workItem from="1595924043797" duration="2785000" />
+      <workItem from="1595993332544" duration="172000" />
+      <workItem from="1597027301754" duration="1535000" />
+      <workItem from="1597040449937" duration="600000" />
     </task>
     <task id="LOCAL-00001" summary="试试看能不能提交文件">
       <created>1594369774042</created>
@@ -557,7 +608,21 @@
       <option name="project" value="LOCAL" />
       <updated>1594370922203</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="readme变更说明">
+      <created>1595223038570</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1595223038570</updated>
+    </task>
+    <task id="LOCAL-00006" summary="readme变更说明">
+      <created>1595234387387</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1595234387387</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +633,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -585,9 +652,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/io/renren/utils/ParamUtil.java</url>
-          <line>199</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/src/main/java/io/renren/utils/GenUtils.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

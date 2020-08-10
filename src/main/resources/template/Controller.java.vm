@@ -153,14 +153,15 @@ public class ${className}Controller {
                 r = R.ok(num);
             }
         }catch (Exception e){
-            r = R.error();
             logger.error(ParamUtil.LOG_ERROR_STR, ParamUtil.string2Json(ParamUtil.getStackTraceInfo(e)));
+            return R.error();
+
         }finally {
             logger.log(LogUtils.returnBizLevel(), ParamUtil.LOG_FORMAT, ipAddr,
                     System.currentTimeMillis() - start, requestURI,
                     null != reqStr ? reqStr.replaceAll(CommonConsts.COMMENT_ENTER_STR,
                             CommonConsts.EMPTY_STR) : "",
-                    r.toJSONString());
+                    JsonUtil.writeObject2JSON(r));
         }
         return r;
     }
